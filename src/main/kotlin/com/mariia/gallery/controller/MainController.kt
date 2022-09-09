@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 
-@Controller
+@RestController
 @RequestMapping("/x")
 class MainController(
     private val productService: ProductService,
@@ -20,11 +20,11 @@ class MainController(
 
     @PostMapping("/product")
     fun createProduct(@RequestBody request: ProductCreateRequest): ResponseEntity<ProductCreateRequest> =
-        ResponseEntity.ok(productService.createProduct(request).toDto())
+        ResponseEntity<ProductCreateRequest>(productService.createProduct(request).toDto(), HttpStatus.MULTI_STATUS)
 
-    @PostMapping("/edit/{id}")
-    fun editProduct(@RequestBody request: ProductCreateRequest, @PathVariable id: Long): ResponseEntity<ProductCreateRequest?> {
-        return ResponseEntity.ok(productService.editById(id, request)?.toDto())
+    @PutMapping("/edit/{id}")
+    fun editProduct(@RequestBody request: ProductCreateRequest, @PathVariable id: Long): ResponseEntity<ProductCreateRequest> {
+        return ResponseEntity<ProductCreateRequest>(productService.editById(id, request)?.toDto(), HttpStatus.MULTI_STATUS)
     }
 
     @GetMapping("/all")

@@ -3,7 +3,7 @@ use database test;
 CREATE TABLE product (
   id int(11) NOT NULL auto_increment,
   name varchar(255),
-  description varchar (255)
+  description varchar (255),
   price int(11) ,
 url varchar(255),
   PRIMARY KEY (`id`)

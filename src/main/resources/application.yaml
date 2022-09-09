@@ -1,5 +1,4 @@
-server:
-  port: 8081
+
 spring:
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
@@ -7,9 +6,9 @@ spring:
   hibernate:
     ddl-auto: update
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3307/test
+    url: jdbc:mysql://mysql:3306/test
     username: root
-    password: root
+    password: coffee
     driver-class-name: com.mysql.jdbc.Driver
 
 

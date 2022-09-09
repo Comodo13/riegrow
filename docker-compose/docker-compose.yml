@@ -1,0 +1,27 @@
+version: '3'
+services:
+  shop:
+    build: app/
+   # environment:
+    #   MYSQL_HOST: mysql
+     #  MYSQL_PORT: 3307
+      # MYSQL_USER: root
+       #MYSQL_PASSWORD: root
+       #MYSQL_NAME: test
+       #MYSQL_DATASOURCE_URL: jdbc:mysql://mysql:3307/test
+    depends_on:
+      - mysql
+    ports:
+      - "5000:8080"
+
+  mysql:
+    image: mysql:latest
+    restart: always
+    environment:
+    #  MSQL_DATASOURCE_URL: jdbc:mysql://mysql:3306/test
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - "3007:3006"
