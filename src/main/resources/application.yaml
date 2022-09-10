@@ -8,7 +8,7 @@ spring:
   datasource:
     url: jdbc:mysql://mysql:3306/test
     username: root
-    password: coffee
+    password: root
     driver-class-name: com.mysql.jdbc.Driver
 
 
